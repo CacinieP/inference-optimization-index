@@ -88,7 +88,7 @@ PyTorch 模型
 ## 6. 端侧学习顺序（4 步）
 
 1. **先建立容量感**：算内存/带宽/理论 token/s（见 §1），能预判「跑不跑得动」
-2. **用现成栈跑通**：llama.cpp + GGUF 量化，理解 `Q4_K_M` 到底是什么
+2. **用现成栈跑通**：llama.cpp + GGUF 量化，理解 `Q4_K_M` 到底是什么（可直接用 [scripts/quantize-gguf.sh](../scripts/quantize-gguf.sh)，一条命令从 HF 走到 llama-bench）
 3. **换一次栈**：PyTorch → ONNX → ORT（或 TensorRT），亲手踩「算子回退」的坑
 4. **再往下**：算子剖析（perf / Nsight / ORT profiling）与 kernel 级优化；此时回到 [GPU-Puzzles](https://github.com/srush/GPU-Puzzles) 与 [Triton](https://github.com/triton-lang/triton)
 

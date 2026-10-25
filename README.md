@@ -7,6 +7,7 @@
 [![License: MIT](https://img.shields.io/badge/LICENSE-MIT-14262b?style=flat-square)](./LICENSE)
 [![Links](https://img.shields.io/badge/LINKS-CHECKED%202026--10--25-69c8bd?style=flat-square)](./scripts/check-links.py)
 [![PRs](https://img.shields.io/badge/PRs-WELCOME-e9795f?style=flat-square)](./CONTRIBUTING.md)
+[![links](https://github.com/CacinieP/inference-optimization-index/actions/workflows/links.yml/badge.svg)](https://github.com/CacinieP/inference-optimization-index/actions/workflows/links.yml)
 
 </div>
 
@@ -131,6 +132,18 @@
 - **[efficientml.ai](https://efficientml.ai/)** — MIT HAN Lab《TinyML and Efficient AI Computing》，剪枝/量化/NAS/蒸馏 + 端侧部署，**端侧方向最系统的课**
 - **[mlsysbook.ai](https://mlsysbook.ai/)** — Harvard & MIT Press《Machine Learning Systems》，含模型压缩与部署章节，网页免费
 - **[tinyml.org](https://www.tinyml.org/)** — TinyML 社区与入门资料（MCU 级部署）
+
+### 2.5 本仓脚本：一条命令跑完 HF → GGUF → 对比
+
+```bash
+# 量化 Q4_K_M / Q5_K_M / Q8_0，并用 llama-bench 出速度
+./scripts/quantize-gguf.sh --model Qwen/Qwen2.5-1.5B-Instruct --quants Q4_K_M,Q5_K_M,Q8_0
+# 只看看会执行什么（不下载、不编译）
+./scripts/quantize-gguf.sh --model Qwen/Qwen2.5-1.5B-Instruct --dry-run
+```
+
+脚本负责：clone/编译 llama.cpp → 下载或读取模型 → 转 f16 → 逐档量化 → `llama-bench` 压测 → 体积汇总表。
+对应 [docs/01-roadmap.md](docs/01-roadmap.md) B 轨 W2–W3；判读方法见 [docs/04-benchmark.md](docs/04-benchmark.md)。
 
 ---
 

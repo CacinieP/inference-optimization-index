@@ -66,7 +66,7 @@
 ### W2–W3 · GGUF 与本地推理
 
 - **任务**：同一模型导出 Q4_K_M / Q5_K_M / Q8_0，测质量、速度、体积
-- **资料**：[GGUF 规范](https://github.com/ggml-org/ggml/blob/master/docs/gguf.md)、[llama.cpp](https://github.com/ggml-org/llama.cpp)
+- **资料**：[GGUF 规范](https://github.com/ggml-org/ggml/blob/master/docs/gguf.md)、[llama.cpp](https://github.com/ggml-org/llama.cpp)、本仓 [scripts/quantize-gguf.sh](../scripts/quantize-gguf.sh)（一条命令跑完转换+量化+压测）
 - **产出**：三维对比表 + 一页「量化档位怎么选」
 - **验收**：能解释 K-quant 的分块量化与 mixed precision
 
